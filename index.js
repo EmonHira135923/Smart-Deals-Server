@@ -5,6 +5,10 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Middleware Here
+app.use(cors());
+app.use(express.json());
+
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@smart-deals-db.tav1enm.mongodb.net/?appName=Smart-Deals-DB`;
 
 const client = new MongoClient(uri, {
