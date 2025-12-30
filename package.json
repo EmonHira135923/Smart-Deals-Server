@@ -2,15 +2,24 @@
   "name": "smart-deals-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmonHira135923/Smart-Deals-Server.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/EmonHira135923/Smart-Deals-Server/issues"
+  },
+  "homepage": "https://github.com/EmonHira135923/Smart-Deals-Server#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
