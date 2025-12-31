@@ -65,3 +65,27 @@ export const deleteProductControllerbyId = async (req, res) => {
   const result = await productsCollection.deleteOne(query);
   res.status(200).json({ result });
 };
+
+// latest-product
+export const LatestProductController = async (req, res) => {
+  try {
+    const productsCollection = getProductCollection();
+    const cursor = productsCollection.find().sort({ created_at: -1 }).limit(6);
+    const result = await cursor.toArray();
+    res.status(200).send(result);
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+};
+
+export const LatestProductControllerbyId = async (req, res) => {
+  try {
+    const productsCollection = getProductCollection();
+    const id = req.params.id;
+    const query = { _id: new ObjectId(id) };
+    const result = await productsCollection.findOne(query);
+    res.status(200).send(result);
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+};

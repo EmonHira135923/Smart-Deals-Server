@@ -4,6 +4,8 @@ import {
   deleteProductControllerbyId,
   getProductController,
   getProductControllerbyID,
+  LatestProductController,
+  LatestProductControllerbyId,
   updateProductControllerbyId,
 } from "../controllers/products.controller.js";
 
@@ -14,5 +16,9 @@ router.get("/get-products", getProductController);
 router.get("/get-products/:id", getProductControllerbyID);
 router.patch("/update-products/:id", updateProductControllerbyId);
 router.delete("/delete-products/:id", deleteProductControllerbyId);
+
+// latest-products routes
+router.get("/latest-products", LatestProductController);
+router.get("/latest-products/:id", LatestProductControllerbyId);
 
 export default router;
