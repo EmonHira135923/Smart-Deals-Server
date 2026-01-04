@@ -50,6 +50,24 @@ export const bidsGetControllerbyId = async (req, res) => {
   }
 };
 
+// GetbidsusingProductID
+// GetbidsusingProductID
+export const GetbidsusingProductID = async (req, res) => {
+  try {
+    const bidsCollection = getBidsCollection();
+    const productid = req.params.productid;
+
+    // ✅ Field name should match your inserted data (productId)
+    const query = { productId: productid }; // String comparison, ObjectId na lagbe jodi tumi string hisabe pathao
+    const cursor = bidsCollection.find(query).sort({ bid_price: -1 });
+    const result = await cursor.toArray();
+
+    res.status(200).send(result);
+  } catch (err) {
+    res.status(400).json({ err });
+  }
+};
+
 // update bids by using id
 export const bidsUpdateControllerbyId = async (req, res) => {
   try {

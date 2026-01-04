@@ -3,7 +3,7 @@ import { ObjectId } from "mongodb";
 // Create Bid Schema
 export const createBid = (data) => {
   return {
-    product: data.product ? new ObjectId(data.product) : null,
+    product: data.productId ? new ObjectId(data.productId) : null,
 
     buyer_image: {
       url: data.buyer_image?.url || data.buyer_image || null,
