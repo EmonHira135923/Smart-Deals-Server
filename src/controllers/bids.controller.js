@@ -29,7 +29,11 @@ export const bidsCreatedController = async (req, res) => {
 export const bidsGetController = async (req, res) => {
   try {
     const bidsCollection = getBidsCollection();
-    const cursor = bidsCollection.find();
+    const query = {};
+    if (query.email) {
+      query.buyer_email = email;
+    }
+    const cursor = bidsCollection.find(query);
     const result = await cursor.toArray();
     res.status(200).json(result);
   } catch (err) {
