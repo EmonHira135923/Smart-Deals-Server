@@ -30,8 +30,8 @@ export const bidsGetController = async (req, res) => {
   try {
     const bidsCollection = getBidsCollection();
     const query = {};
-    if (query.email) {
-      query.buyer_email = email;
+    if (req.query.email) {
+      query.buyer_email = req.query.email;
     }
     const cursor = bidsCollection.find(query);
     const result = await cursor.toArray();
