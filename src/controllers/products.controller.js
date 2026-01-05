@@ -89,3 +89,18 @@ export const LatestProductControllerbyId = async (req, res) => {
     res.status(400).send(err.message);
   }
 };
+
+export const MyProductController = async (req, res) => {
+  try {
+    const productsCollection = getProductCollection();
+    const query = {};
+    if (req.query.email) {
+      query.email = req.query.email;
+    }
+    const cursor = productsCollection.find(query);
+    const result = await cursor.toArray();
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(400).json({ err });
+  }
+};

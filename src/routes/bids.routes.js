@@ -6,6 +6,7 @@ import {
   bidsGetControllerbyId,
   bidsUpdateControllerbyId,
   GetbidsusingProductID,
+  MyProductController,
 } from "../controllers/bids.controller.js";
 
 const router = express.Router();

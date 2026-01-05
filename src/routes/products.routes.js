@@ -6,6 +6,7 @@ import {
   getProductControllerbyID,
   LatestProductController,
   LatestProductControllerbyId,
+  MyProductController,
   updateProductControllerbyId,
 } from "../controllers/products.controller.js";
 
@@ -20,5 +21,8 @@ router.delete("/delete-products/:id", deleteProductControllerbyId);
 // latest-products routes
 router.get("/latest-products", LatestProductController);
 router.get("/latest-products/:id", LatestProductControllerbyId);
+
+// Mybids products
+router.get("/my-products", MyProductController);
 
 export default router;
