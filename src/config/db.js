@@ -18,14 +18,14 @@ let bidsCollection;
 
 export const connectDB = async () => {
   try {
-    await client.connect();
+    // await client.connect();
     db = client.db("Smart_Deals_Management");
     productsCollection = db.collection("products");
     bidsCollection = db.collection("mybids");
     console.log("MongoDb Conneted succesfully");
   } catch (err) {
     console.log("MongoDB not connected", err.message);
-    process.exit(1);
+    // process.exit(1);
   }
 };
 
