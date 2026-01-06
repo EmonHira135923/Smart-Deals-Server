@@ -31,6 +31,9 @@ export const bidsGetController = async (req, res) => {
     const bidsCollection = getBidsCollection();
     const query = {};
     if (req.query.email) {
+      if (req.query.email !== req.token_email) {
+        return res.status(403).send({ message: "Forbidden access" });
+      }
       query.buyer_email = req.query.email;
     }
     const cursor = bidsCollection.find(query);

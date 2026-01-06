@@ -6,18 +6,26 @@ import {
   bidsGetControllerbyId,
   bidsUpdateControllerbyId,
   GetbidsusingProductID,
-  MyProductController,
 } from "../controllers/bids.controller.js";
+import { verifyFirebaseAdmin } from "../middlewares/bids.middlware.js";
 
 const router = express.Router();
 
 router.post("/create-bids", bidsCreatedController);
-router.get("/get-bids", bidsGetController);
-router.get("/get-bids/:id", bidsGetControllerbyId);
+router.get("/get-bids", verifyFirebaseAdmin, bidsGetController);
+router.get("/get-bids/:id", verifyFirebaseAdmin, bidsGetControllerbyId);
 router.patch("/update-bids/:id", bidsUpdateControllerbyId);
-router.delete("/delete-bids/:id", bidsDeleteControllerbyId);
+router.delete(
+  "/delete-bids/:id",
+  verifyFirebaseAdmin,
+  bidsDeleteControllerbyId
+);
 
 // get products by bid using id
-router.get("/products/by/bids/:productid", GetbidsusingProductID);
+router.get(
+  "/products/by/bids/:productid",
+  verifyFirebaseAdmin,
+  GetbidsusingProductID
+);
 
 export default router;
